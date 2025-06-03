@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  sqlite-db:
+    image: nouchka/sqlite3:latest  # Usando uma imagem de SQLite
+    container_name: sqlite-container
+    volumes:
+      - ./data:/data  # Monta o diretório local "data" no diretório "/data" do container
+    command: ["sqlite3", "/data/mydb.db"]  # Inicia o SQLite com o banco de dados "mydb.db" no diretório montado
+    ports:
+      - "8080:8080" 
+    restart: always
